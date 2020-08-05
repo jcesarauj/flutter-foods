@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterMeats/data/damy_data.dart';
 import '../components/category-item.dart';
-import '../models/category.dart';
 
 class CategoryScreen extends StatelessWidget {
   @override
