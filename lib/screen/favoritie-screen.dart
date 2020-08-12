@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterMeats/components/meals-item.dart';
 import 'package:flutterMeats/models/meal.dart';
 
 class FavoritieScreen extends StatelessWidget {
@@ -7,6 +8,14 @@ class FavoritieScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Minhas comidas favoritas"));
+    if (favoriteMeals.isEmpty) {
+      return Center(child: Text("Sorry! Vc não tem favoritos"));
+    } else {
+      return ListView.builder(
+          itemCount: favoriteMeals.length,
+          itemBuilder: (ctx, index) {
+            return MealsItem(favoriteMeals[index]);
+          });
+    }
   }
 }

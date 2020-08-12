@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterMeats/models/meal.dart';
 
 class MealsDetailScreen extends StatelessWidget {
+  final Function(Meal) _setFavorite;
+  final Function(Meal) _isFavorite;
+
+  const MealsDetailScreen(this._setFavorite, this._isFavorite);
+
   @override
   Widget build(BuildContext context) {
     final meal = ModalRoute.of(context).settings.arguments as Meal;
@@ -78,9 +83,9 @@ class MealsDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.star),
+          child: Icon(_isFavorite(meal) ? Icons.star : Icons.star_border),
           onPressed: () {
-            Navigator.of(context).pop(meal);
+            _setFavorite(meal);
           }),
     );
   }
